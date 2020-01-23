@@ -29,40 +29,45 @@
         </div>
         <div class="card-body" id="tables">
         </div>
+    </div>
+    <div class="card" id="waitlistDiv">
+        <div class="card-header">
+            <h3><strong>Waitlist</strong></h3>
+        </div>
         <div class="card-body" id="waitlist">
         </div>
     </div>
     <div>
-            <a href="#">Clear Tables</a>
-            <a href="/api/tables">API Table Link</a>
-            <a href="/api/waitlist">API Wait List</a>
-        </div>
+        <a href="#">Clear Tables</a>
+        <a href="/api/tables">API Table Link</a>
+        <a href="/api/waitlist">API Wait List</a>
+    </div>
     <script>
         const onLoad = () => {
             $("#tables").empty();
             $("#waitlist").empty();
             $.get("/api/tables", data => {
                 console.log(data)
-                if (data) {
+                if (data !== []) {
                     for (table of data) {
                         const newTable = $(`<div><h2>${table.name}</h2><h3><strong>Id:</strong> <span>${table.id}</span></h3></div>`)
                         $("#tables").append(newTable)
                     }
                 } else {
                     $("#tables").append(`<h2>There are no Reservations</h2>`)
-                    $("#waitlist").hide();
+                    $("#waitlistDiv").hide();
                     return;
                 }
             })
             $.get("/api/waitlist", data => {
                 console.log(data)
-                if (data) {
+                if (data !== []) {
                     for (table of data) {
-                        const newTable = $(`<div><h2>${data.name}</h2><h3><strong>Id:</strong> <span>${data.id}</span></h3></div>`)
+                        const newTable = $(`<div><h2>${table.name}</h2><h3><strong>Id:</strong> <span>${table.id}</span></h3></div>`)
                         $("#waitlist").append(newTable)
                     }
                 } else {
-                    $("#waitlist").hide();
+                    $("#waitlistDiv").hide();
                     return;
                 }
             })
