@@ -7,10 +7,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const reservations = {
+const reservations = [
     tables = [],
     waitlist = [],
-}
+]
 
 
 // front end functions
