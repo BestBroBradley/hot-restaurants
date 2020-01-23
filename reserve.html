@@ -30,19 +30,19 @@
                 <form>
                     <div class="form-group">
                         <label for="Name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="First Last">
+                        <input type="input" class="form-control" id="name" placeholder="First Last">
                     </div>
                     <div class="form-group">
                         <label for="Phone">Phone Number</label>
-                        <input type="text" class="form-control" id="phone" placeholder="XXX-XXX-XXXX">
+                        <input type="input" class="form-control" id="phone" placeholder="XXX-XXX-XXXX">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="Example@email.com">
+                        <input type="input" class="form-control" id="email" placeholder="Example@email.com">
                     </div>
                     <div class="form-group">
                         <label for="customerId">Customer ID</label>
-                        <input type="text" class="form-control" id="customerId" placeholder="ID">
+                        <input type="input" class="form-control" id="customerId" placeholder="ID">
                         <br>
                         <button class="btn btn-primary" id="submitReserve" type="submit">Button</button>
                     </div>
@@ -61,14 +61,14 @@
                 name: $('#name').val().trim(),
                 email: $('#email').val().trim(),
                 phone: $('#phone').val().trim(),
-                id: $('#id').val().trim()
+                id: $('#customerId').val().trim()
 
             }
             $.post('api/reservations', newTable)
                 .then(() => {
-                    $.get('api/reservations', (data) => {
-                        console.log(data)
-                    })
+
+
+                alert(`${newTable.name} reservation was received for today `)
 
                 })
         })
