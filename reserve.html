@@ -39,6 +39,21 @@
     </div>
 </div>
       </form>
-    
+      <script>
+        $('#submitReserve').on('click',function(data){
+            data.preventDefault()
+            var newTable = {
+                name : $('#name').val().trim(),
+                email : $('#email').val().trim(),
+                phone : $('#phone').val().trim(),
+                id : $('#id').val().trim()
+
+            }
+            $.post('api/reservations',newTable)
+            .then(()=>{
+                
+            })
+        })
+    </script>
 </body>
 </html>
