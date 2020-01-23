@@ -44,7 +44,7 @@
                 console.log(data)
                 if (data) {
                     for (table of data) {
-                        const newTable = $(`<div><h2>${data.name}</h2><h3><strong>Id:</strong> <span>${data.id}</span></h3></div>`)
+                        const newTable = $(`<div><h2>${table.name}</h2><h3><strong>Id:</strong> <span>${table.id}</span></h3></div>`)
                         $("#tables").append(newTable)
                     }
                 } else {

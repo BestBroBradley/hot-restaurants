@@ -22,16 +22,14 @@ app.get("/reserve", (req, res) => {
 
 app.get("/tables", (req, res) => {
     res.sendFile(path.join(__dirname, "tables.html"));
-    getTables();
-    getWait();
 });
 
 app.get("/api/tables", (req, res) => {
-    return res.json(reservations.tables);
+    return res.json(reservations[0]);
 });
 
 app.get("/api/waitlist", (req, res) =>{
-    return res.json(reservations.waitlist);
+    return res.json(reservations[1]);
 });
 
 // app.post Here
