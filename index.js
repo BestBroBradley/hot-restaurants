@@ -8,28 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const reservations = [
-    tables= [],
+    tables = [],
     waitList = []
 ]
-
-   
-
-   
-
-
-
-// front end functions
-const getTables = () => {
-    app.get("/api/tables", data => {
-        console.log(data)
-    })
-}
-const getWait = () => {
-    app.get("/api/waitlist", data => {
-        console.log(data)
-    })
-}
-// ======================================================================
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
