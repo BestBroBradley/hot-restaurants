@@ -22,10 +22,49 @@
         <p></p>
         <a class="btn btn-primary btn-lg" href="/reserve" role="button">Reserve</a>
     </div>
-    <script> 
-    $.get('/api/reservations',(data)=>{
-        console.log(data)
-    })</script>
+
+    <div class="card">
+        <div class="card-header">
+            <h3><strong>Tables</strong></h3>
+        </div>
+        <div class="card-body" id="tables">
+        </div>
+        <div class="card-body" id="waitlist">
+        </div>
+    </div>
+    <script>
+        const onLoad = () => {
+            $("#tables").empty();
+            $("#waitlist").empty();
+            $.get("/api/tables", data => {
+                console.log(data)
+                if (data) {
+                    for (table of data) {
+                        const newTable = $(`<div><h2>${data.name}</h2><h3><strong>Id:</strong> <span>${data.id}</span></h3></div>`)
+                        $("#tables").append(newTable)
+                    }
+                } else {
+                    $("#tables").append(`<h2>There are no Reservations</h2>`)
+                    $("#waitlist").hide();
+                    return;
+                }
+            })
+            $.get("/api/waitlist", data => {
+                console.log(data)
+                if (data) {
+                    for (table of data) {
+                        const newTable = $(`<div><h2>${data.name}</h2><h3><strong>Id:</strong> <span>${data.id}</span></h3></div>`)
+                        $("#waitlist").append(newTable)
+                    }
+                } else {
+                    $("#waitlist").hide();
+                    return;
+                }
+            })
+        }
+        onLoad();
+    </script>
+
 </body>
 
 </html>
