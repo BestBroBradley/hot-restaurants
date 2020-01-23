@@ -7,20 +7,25 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const reservations = {
-    tables = [],
-    waitlist = [],
-}
+const reservations = [
+    tables= [],
+    waitList = []
+]
+
+   
+
+   
+
 
 
 // front end functions
 const getTables = () => {
-    $.get("/api/tables", data => {
+    app.get("/api/tables", data => {
         console.log(data)
     })
 }
 const getWait = () => {
-    $.get("/api/waitlist", data => {
+    app.get("/api/waitlist", data => {
         console.log(data)
     })
 }

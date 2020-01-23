@@ -1,59 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+        crossorigin="anonymous"></script>
 </head>
-<body><div class="container">
 
-<div class='row'>
-    <div class="col-m-12">
-    <form>
-        <div class="form-group">
-          <label for="Name">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="First Last">
-        </div>
-        <div class="form-group">
-          <label for="Phone">Phone Number</label>
-          <input type="text" class="form-control" id="phone" placeholder="XXX-XXX-XXXX">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" placeholder="Example@email.com">
-        </div>
-        <div class="form-group">
-          <label for="customerId">Customer ID</label>
-          <input type="text" class="form-control" id="customerId" placeholder="ID">
-          <br>
-          <button class="btn btn-primary" id="submitReserve" type="submit">Button</button>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-3">Hot Restaurant</h1>
+        <p class="lead">Book your seat before they are all gone </p>
+        <hr class="my-3">
+        <p></p>
+        <a class="btn btn-primary btn-lg" href="/tables" role="button">View Tables</a>
+    </div>
+    <div class="container">
+
+
+        <div class='row'>
+            <div class="col-m-12">
+                <form>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="First Last">
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="XXX-XXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="Example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerId">Customer ID</label>
+                        <input type="text" class="form-control" id="customerId" placeholder="ID">
+                        <br>
+                        <button class="btn btn-primary" id="submitReserve" type="submit">Button</button>
+                    </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
-      </form>
-      <script>
-        $('#submitReserve').on('click',function(data){
+    </form>
+    <script>
+        $('#submitReserve').on('click', function (data) {
             data.preventDefault()
             var newTable = {
-                name : $('#name').val().trim(),
-                email : $('#email').val().trim(),
-                phone : $('#phone').val().trim(),
-                id : $('#id').val().trim()
+                name: $('#name').val().trim(),
+                email: $('#email').val().trim(),
+                phone: $('#phone').val().trim(),
+                id: $('#id').val().trim()
 
             }
-            $.post('api/reservations',newTable)
-            .then(()=>{
-                
-            })
+            $.post('api/reservations', newTable)
+                .then(() => {
+                    $.get('api/reservations', (data) => {
+                        console.log(data)
+                    })
+
+                })
         })
     </script>
 </body>
+
 </html>
