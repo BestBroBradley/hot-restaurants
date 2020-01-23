@@ -32,6 +32,11 @@
         <div class="card-body" id="waitlist">
         </div>
     </div>
+    <div>
+            <a href="#">Clear Tables</a>
+            <a href="/api/tables">API Table Link</a>
+            <a href="/api/waitlist">API Wait List</a>
+        </div>
     <script>
         const onLoad = () => {
             $("#tables").empty();
@@ -40,7 +45,7 @@
                 console.log(data)
                 if (data) {
                     for (table of data) {
-                        const newTable = $(`<div><h2>${data.name}</h2><h3><strong>Id:</strong> <span>${data.id}</span></h3></div>`)
+                        const newTable = $(`<div><h2>${table.name}</h2><h3><strong>Id:</strong> <span>${table.id}</span></h3></div>`)
                         $("#tables").append(newTable)
                     }
                 } else {

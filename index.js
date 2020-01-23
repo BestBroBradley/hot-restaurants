@@ -24,8 +24,6 @@ app.get("/reserve", (req, res) => {
 
 app.get("/tables", (req, res) => {
     res.sendFile(path.join(__dirname, "tables.html"));
-    getTables();
-    getWait();
 });
 
 app.get("/api/tables", (req, res) => {
@@ -50,8 +48,6 @@ app.post("/api/reservations", (req, res) => {
     res.json(reservations)
 
 })
-
-// ====================================================================
 
 app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT)
