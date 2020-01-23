@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const reservations = [
-    tables= [],
+    tables= [{name : 'alex'}],
     waitList = []
 ]
 
@@ -46,22 +46,28 @@ app.get("/tables", (req, res) => {
 });
 
 app.get("/api/tables", (req, res) => {
-    return res.json(reservations.tables);
+    return res.json(reservations[0]);
 });
 
 app.get("/api/waitlist", (req, res) =>{
-    return res.json(reservations.waitlist);
+    return res.json(reservations[1]);
 });
 
 // app.post Here
 app.post("/api/reservations", (req, res) => {
     const newReservation = req.body
-    if (reservations.tables.length < 5) {
-        reservations.tables.push(newReservation)
+    if (reservations[0].length < 5) {
+        reservations[0].push(newReservation)
+        console.log(reservations)
+        // res.json(reservations)
     } else {
-        reservations.waitlist.push(newReservation)
+        reservations[1].push(newReservation)
+        console.log(reservations)
     }
+    res.json(reservations)
+
 })
+
 // ====================================================================
 
 app.listen(PORT, () => {

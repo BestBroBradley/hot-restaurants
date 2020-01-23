@@ -22,7 +22,10 @@
         <p></p>
         <a class="btn btn-primary btn-lg" href="/reserve" role="button">Reserve</a>
     </div>
-    <script></script>
+    <script> 
+    $.get('/api/reservations',(data)=>{
+        console.log(data)
+    })</script>
 </body>
 
 </html>
